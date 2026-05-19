@@ -1,27 +1,6 @@
-// Our first function needs to populate an Array
-// Does this array already exist in the test?
-// /function createEmployeeRecord(dataEmployees) {
-//    /let employeeRecord = {}
-        //dataEmployees.forEach((current, index) => {
-        //   /  employeeRecord[index] = current
-        // /})
-    //    /   return employeeRecord
-    // /}
-    //function createEmployeeRecord(dataEmployees) {
-    //let employeeRecord = dataEmployees.reduce((acc, current, index) => {
-      //  if (index === 0) acc.firstName = current;
-       // if (index === 1) acc.familyName = current;
-       // if (index === 2) acc.title = current;
-       // if (index === 3) acc.payPerHour = current;
-       // return acc
-    //}, {})
-       // return employeeRecord
+///note in future - start by outlining everything before going in to pseudocode.
+// I think seeing the skeleton as a whole would be helpful.
 
-    // /console.log(createEmployeeRecord)
-    //console.log(employeeRecord)
-    // console.log(dataEmployees)
-
-//}
 
 function createEmployeeRecord(values) { //// I was really proud of figuring out using reduce and then I spoke with Barkley on his solution
                                                 /// and realized reduce wasn't as effective in this lab, that it would be the superior choice if 
@@ -29,9 +8,9 @@ function createEmployeeRecord(values) { //// I was really proud of figuring out 
   // console.log('values:', values);
   const record = {
     firstName: values[0],
-    familyName: values[1],
-    title: values[2],
-    payPerHour: values[3],
+    familyName: values[1],                  // As I've continued piecing these functions together, I see writing the function like this is useful because it 
+    title: values[2],                       // it handles all of the key mappings and allows us to use it as a helper function when writing some of the other functions.
+    payPerHour: values[3],                  
     timeInEvents: [],
     timeOutEvents: [],
   };
@@ -39,20 +18,66 @@ function createEmployeeRecord(values) { //// I was really proud of figuring out 
   return record;
 }
 
-
-    // return createEmployeeRecord
-
-/// In our createEmployeeRecord function we need to populate names from specific indexes of the array.
-///1st we need to populate firstName field from the 0th element
-///2nd we need to populate familyName field from the 1th element
-///3rd we need to populate a title field from the 2th element
-///4th we need to populate a payPerHour field from the 3th element
-//This mean we are iterating through the array to populate a string in each index, [0,1,2,3]
-/// My idea was to iterate through the array and return the specific indexes to create the employeeRecord
-///We can use reduce for this I believe.. 
-///Then we initialize a field
-/// 1st timeInEvents - holds an empty array
-///2nd timeOutEvents holds an empty array
+function createEmployeeRecords(employeeRecords) { // I wrote this function a couple different ways and was not getting the correct return back. 
+    return employeeRecords.map((record) => {          // I realized we could pass in the previous function here since createEmployeeRecord already expects a single array of values
+                                                        ///and returns the perfect object.
+    return createEmployeeRecord(record)
+    
+    });
+  };
+  console.log(firstName);
+  console.log(lastName);
+  console.log(role);
+  console.log("on leave"); // This returns the brand new array of objects
 
 
-//createEmployeeRecord
+
+//function createEmployeeRecords(employeeData) {
+  // Treat employeeData as a single array for one employee
+ // const firstName = employeeData[0];
+ // const lastName = employeeData[1];
+ // const role = employeeData[2];
+ // console.log(undefined)
+
+  // Return a single object record
+  //return {
+  //  firstName: firstName,
+  //  lastName: lastName,
+ //   role: role,
+//    / status: "on leave",
+
+//   /};
+//}
+
+
+// function createEmployeeRecords(values) {
+   // return values.map(values => {
+     //   const firstName = values[0];
+       // const lastName = values[1];
+        //const role = values[2];
+        // /console.log('values')
+        // /console.log(values) ///this showed me I was grabbing a single flat array vs an array in an array. 
+                            ///let's switch out values and see what we get back
+        // /console.log(createEmployeRecords) 
+
+    
+
+    // return {/
+       // firstName: firstName,
+        //lastName: lastName,
+       // role: role,
+        // /status: "on leave"
+   // }
+ // })
+//}
+
+
+/// For the second function we want to "process" an array of arrays into an array of employee records
+/// We have 3 requirements for the function 
+    /// 1- we create two records
+    ////2-correctly assign the first names
+    ///creates more than 2 records
+    ///Can we use the spread operator here?
+    ///Is that going to be the best method for the behavior we want our function to have??
+    //Can we use .map()?
+
